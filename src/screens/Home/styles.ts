@@ -67,4 +67,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 2,
   },
+  tasksList: {
+    paddingHorizontal: 24,
+    marginTop: 20,
+  },
 });
