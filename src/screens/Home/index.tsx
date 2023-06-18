@@ -14,17 +14,13 @@ import uuid from "react-native-uuid";
 import { TaskTypes } from "../../@types";
 import { styles } from "./styles";
 import { EmptyList } from "./components/EmptyList";
+import { Task } from "./components/Task";
 
 import Logo from "../../assets/logo.png";
-import { Task } from "./components/Task";
 
 export function Home() {
   const [tasks, setTasks] = useState<TaskTypes[]>([]);
   const [inputValue, setInputValue] = useState("");
-
-  const tasksSorted = tasks.sort(
-    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-  );
 
   const handleTaskAdd = () => {
     if (inputValue === "") {
@@ -37,7 +33,7 @@ export function Home() {
         id: uuid.v4() as string,
         content: inputValue,
         isCompleted: false,
-        createdAt: new Date().toString(),
+        createdAt: new Date().toISOString(),
       },
     ]);
     setInputValue("");
@@ -129,7 +125,7 @@ export function Home() {
       </View>
       <FlatList
         style={styles.tasksList}
-        data={tasksSorted}
+        data={tasks}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Task

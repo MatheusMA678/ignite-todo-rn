@@ -18,7 +18,7 @@ export default function App() {
     return null;
   }
 
-  NavigationBar.setBackgroundColorAsync("black");
+  NavigationBar.setBackgroundColorAsync("#0D0D0D");
 
   return (
     <>
